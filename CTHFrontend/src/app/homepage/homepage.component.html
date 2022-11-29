@@ -1,0 +1,11 @@
+<body>
+<app-nav></app-nav>
+<div class="container text-center">
+    <div class="row" *ngIf="!showTransactions">
+        <div class="col"><br><br>
+            <h1>Welcome {{name}}</h1>
+        </div>
+    </div>
+</div>
+<app-account-details></app-account-details>
+</body>

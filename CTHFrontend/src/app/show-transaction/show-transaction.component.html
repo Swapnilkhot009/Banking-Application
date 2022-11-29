@@ -1,0 +1,78 @@
+<body>
+<app-nav></app-nav>
+<div class="container text-center" *ngIf="showTransaction">
+    <div class="row justify-content-md-center">
+      <div class="col col-lg-1">
+      </div>
+      <div class="col col-lg-12">
+        <div class="container">
+            <b><h3>Transaction Details</h3></b>
+            <hr style="border: 3px solid rgb(6, 103, 20);border-radius: 5px;">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Transaction No.</th>
+                    <th>Customer Id</th>
+                    <th>Transaction Date</th>
+                    <th>Transfer Type</th>
+                    <th>Frequency</th>
+                </tr>
+                <tr>
+                    <td>{{transactionDetail.transactionReferenceNumber}}</td>
+                    <td>{{transactionDetail.customerID}}</td>
+                    <td>{{(transactionDetail.transactionDate) | date}}</td>
+                    <td>{{transactionDetail.transferType}}</td>
+                    <td>{{transactionDetail.frequency}}</td>
+                </tr>
+            </table>
+            <b><h3>Debitor Details</h3></b>
+            <hr style="border: 3px solid rgb(6, 103, 20);border-radius: 5px;">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Account No.</th>
+                    <th>Account Type</th>
+                    <th>Account Name</th>
+                    <th>Bank Code</th>
+                    <th>Bank Name</th>
+                </tr>
+                <tr>
+                    <td>{{transactionDetail.debitorAccountDetails.accountNo}}</td>
+                    <td>{{transactionDetail.debitorAccountDetails.accountType}}</td>
+                    <td>{{transactionDetail.debitorAccountDetails.accountName}}</td>
+                    <td>{{transactionDetail.debitorAccountDetails.debitorBankInformation.bankCode}}</td>
+                    <td>{{transactionDetail.debitorAccountDetails.debitorBankInformation.bankName}}</td>
+                </tr>
+            </table>
+            <b><h3>Creditor Details</h3></b>
+            <hr style="border: 3px solid rgb(6, 103, 20);border-radius: 5px;">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Account No.</th>
+                    <th>Account Type</th>
+                    <th>Beneficiary Type</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Bank Code</th>
+                    <th>Bank Name</th>
+                </tr>
+                <tr>
+                    <td>{{transactionDetail.creditorAccountDetails.accountNo}}</td>
+                    <td>{{transactionDetail.creditorAccountDetails.accountType}}</td>
+                    <td>{{transactionDetail.creditorAccountDetails.beneficiaryType}}</td>
+                    <td>{{transactionDetail.creditorAccountDetails.beneficiaryDetails.name}}</td>
+                    <td>{{transactionDetail.creditorAccountDetails.beneficiaryDetails.address}}</td>
+                    <td>{{transactionDetail.creditorAccountDetails.beneficiaryDetails.email}}</td>
+                    <td>{{transactionDetail.creditorAccountDetails.beneficiaryDetails.phone}}</td>
+                    <td>{{transactionDetail.creditorAccountDetails.beneficiaryDetails.beneficiaryBankInformation.bankCode}}</td>
+                    <td>{{transactionDetail.creditorAccountDetails.beneficiaryDetails.beneficiaryBankInformation.bankName}}</td>
+                </tr>
+            </table>
+            <button class="btn btn-primary" (click)="goBack()">Back</button>
+        </div>
+      </div>
+      <div class="col col-lg-1">
+      </div>
+    </div>
+  </div>
+</body>

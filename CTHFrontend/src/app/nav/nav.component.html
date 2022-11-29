@@ -1,0 +1,31 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> -->
+
+  <nav class="navbar navbar-dark navbar-expand-lg" style="background-color: rgb(6, 103, 20)">
+    <div class="container-fluid">
+      <a class="navbar-brand"><b><strong>ATLANTIS</strong></b></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active " aria-current="page" [routerLink]="['/home']"><b>Home</b> </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/beneficiaryDetails']"><b style="color: white;">Transaction</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/transactionDetails']"><b style="color: white;">History</b></a>
+          </li>
+        </ul>
+        <ul class="navbar-nav mb-lg-0">
+          
+          <li class="nav-item">
+            <a class="btn btn-warning" (click)="logout()"><b>Logout</b></a>
+            
+          </li>
+      </ul>
+      </div>
+    </div>
+  </nav>
+

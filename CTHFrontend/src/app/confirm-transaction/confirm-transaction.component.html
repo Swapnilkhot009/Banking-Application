@@ -1,0 +1,66 @@
+
+<app-nav></app-nav>
+<div class="row" style="margin-top: 3%;">
+    <div class="col col-lg-1"></div>
+    <div class="text-bg-secondary text-center" *ngIf="errorMessage!=''">
+        <h2>{{this.errorMessage}} Please try again!!!</h2>
+    </div>
+    <div id="success" *ngIf="transactionSuccess" class="col-lg-10 alert alert-success justify-content-center">Transaction Successful <br>
+        Transaction Id: {{transactionId}}
+    </div>
+    <div class="col col-lg-10" *ngIf="!transactionSuccess && errorMessage==''">
+        <ol type="I">
+            <li class="list-group-item-success"><b>Transaction Details</b></li>
+            <ol type="1">
+                <li><td>Customer Id&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td><td>{{transactionDetails.customerID}}</td></li>
+                <li><td>Amount&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td><td>{{transactionDetails.amount | currency:'INR'}}</td></li>
+                <li><td>Transaction Date&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td><td>{{transactionDetails.transactionDate | date}}</td></li>
+                <li><td>Transfer Type&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td><td>{{transactionDetails.transferType}}</td></li>
+                <li><td>Frequency&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td><td>{{transactionDetails.frequency}}</td></li>
+            </ol>
+            <li  class="list-group-item-success"><b>Creditor Details</b></li>
+            <ol type="1">
+                <li><td>Account No&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td><td>{{transactionDetails.creditorAccountDetails.accountNo}}</td></li>
+                <li><td>Account Type&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td><td>{{transactionDetails.creditorAccountDetails.accountType}}</td></li>
+                <li><td>Beneficiary Type&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td><td>{{transactionDetails.creditorAccountDetails.beneficiaryType}}</td></li>
+                <li>Beneficiary Details</li>
+                <ol type="A">
+                    <li><td>Name&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td><td>{{transactionDetails.creditorAccountDetails.beneficiaryDetails.name}}</td></li>
+                    <li><td>Address&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td><td>{{transactionDetails.creditorAccountDetails.beneficiaryDetails.address}}</td></li>
+                    <li><td>Phone&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td><td>{{transactionDetails.creditorAccountDetails.beneficiaryDetails.phone}}</td></li>
+                    <li><td>Email&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td><td>{{transactionDetails.creditorAccountDetails.beneficiaryDetails.email}}</td></li>
+                    <li>Bank Information</li>
+                    <ol type="a">
+                        <li><td>Bank Name&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+                            <td>{{transactionDetails.creditorAccountDetails.beneficiaryDetails.beneficiaryBankInformation.bankName}}</td>
+                        </li>
+                        <li><td>Bank Code&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+                            <td>{{transactionDetails.creditorAccountDetails.beneficiaryDetails.beneficiaryBankInformation.bankCode}}</td>
+                        </li>
+                    </ol>
+                </ol>
+            </ol>
+            <li class="list-group-item-success"><b>Debitor Details</b></li>
+            <ol type="1">
+                <li><td>Account No&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td><td>{{transactionDetails.debitorAccountDetails.accountNo}}</td></li>
+                <li><td>Account Type&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td><td>{{transactionDetails.debitorAccountDetails.accountType}}</td></li>
+                <li><td>Account Name&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td><td>{{transactionDetails.debitorAccountDetails.accountName}}</td></li>
+                <li>Bank Information </li>
+                <ol type="A">
+                    <li><td>Bank Name&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+                        <td>{{transactionDetails.debitorAccountDetails.debitorBankInformation.bankName}}</td>
+                    </li>
+                    <li><td>Bank Code&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+                        <td>{{transactionDetails.debitorAccountDetails.debitorBankInformation.bankCode}}</td>
+                    </li>
+                </ol>
+            </ol>
+        </ol>
+        <div class="d-grid gap-2 col-2 mx-auto float-start">
+            <button type="button" class="btn btn-outline-danger" type="button" (click)="goBack()" ><b>Previous</b></button>
+        </div>
+        <div class="d-grid gap-2 col-2 mx-auto float-end">
+            <button type="button" class="btn btn-outline-success" (click)="confirmTransaction()"  ><b>Submit</b></button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<body>
+<app-nav></app-nav>
+<div class="container text-center">
+    <div class="row justify-content-md-center">
+      <div class="col col-lg-1">
+      </div>
+      <div id="success" *ngIf="transactionSuccess" class="alert alert-success">Transaction Successful <br>
+        Transaction Id: {{transactionId}}
+      </div>
+      <div *ngIf="!transactionSuccess" class="col col-lg-10">
+        <div class="container">
+            <form class="transaction" [formGroup]="transactionForm" (ngSubmit)="submit()">
+                <b><h1>Transaction Details</h1></b>
+                <hr style="border: 5px solid grey;border-radius: 5px;">
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text">Amount</label>
+                <input [class.is-invalid]="transactionForm.controls['amount'].invalid && transactionForm.controls['amount'].touched" type="text" class="form-control" placeholder="Enter amount " formControlName="amount" >
+            </div>
+            <div class="float-start" style="margin-left: 18%;">
+            <p *ngIf="transactionForm.controls['amount'].errors?.['required'] && transactionForm.controls['amount'].touched " class="text-danger">Amount is required</p>
+            </div>
+            <br>
+            <!-- <div class="input-group flex-nowrap">
+               <label class="input-group-text">Customer Id</label>
+               <input [class.is-invalid] = "transactionForm.controls['customerID'].invalid && transactionForm.controls['customerID'].touched" type="text" class="form-control" placeholder="Enter 10 digits customerId" formControlName="customerID" >    
+            </div>
+            <div class="float-start" style="margin-left: 18%;">
+            <div *ngIf="(transactionForm.controls['customerID'].invalid || transactionForm.controls['customerID'].touched)"></div>
+            <p *ngIf="transactionForm.controls['customerID'].errors?.['required'] && transactionForm.controls['customerID'].touched " class="text-danger">Customer ID  is required </p>
+            <p *ngIf="transactionForm.controls['customerID'].errors?.['pattern'] && transactionForm.controls['customerID'].touched" class="text-danger">Customer ID should 10 digits </p>
+            </div>
+            <br> -->
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text">Transaction Date</label>
+                <input [class.is-invalid]="transactionForm.controls['transactionDate'].invalid && transactionForm.controls['transactionDate'].touched" type="date" class="form-control" placeholder="Enter Date" formControlName="transactionDate" >
+            </div>
+            <div class="float-start" style="margin-left: 18%;">
+            <p *ngIf="transactionForm.controls['transactionDate'].errors?.['required'] && transactionForm.controls['transactionDate'].touched " class="text-danger">Transaction Date is required</p>
+            <p *ngIf="transactionForm.controls['transactionDate'].errors?.['dateInvalid'] && transactionForm.controls['transactionDate'].touched " class="text-danger">{{transactionForm.controls['transactionDate'].errors?.['dateInvalid'].message}}</p>
+            </div>
+            <br>
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text">Transfer Type</label>
+                <select [class.is-invalid]="transactionForm.controls['transferType'].invalid && transactionForm.controls['transferType'].touched" class="form-control" formControlName="transferType">
+                    <option disabled selected>--SELECT--</option>
+                    <option value="INTERNAL">INTERNAL</option>
+                    <option value="EXTERNAL">EXTERNAL</option>
+                </select>
+                <!-- <input type="text" class="form-control" placeholder="Type of transfer" formControlName="transferType" > -->
+            </div>
+            <div class="float-start" style="margin-left: 18%;">
+            <p *ngIf="transactionForm.controls['transferType'].errors?.['required'] && transactionForm.controls['transferType'].touched " class="text-danger">Transfer Type Should be selected</p>
+            </div>
+            <br>
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text">Frequency</label>
+                <input checked style="margin-left: 3%;" type="radio" class="radio-inline" name="frequency" formControlName="frequency" value="ONETIME"><label>ONETIME</label>
+                <input [disabled]="true" type="radio" class="radio-inline" name="frequency" formControlName="frequency" value="RECURRING"><label>RECURRING</label>
+            </div>
+            <div *ngIf="transactionForm.controls['frequency'].errors?.['required'] && transactionForm.controls['frequency'].touched " class="text-danger">Frequency should be selected</div>
+            <br>
+            <div class="d-grid gap-2 col-2 mx-auto float-start">
+                <button class="btn btn-outline-danger" type="button" (click)="goBack()"><b>Previous</b></button>
+            </div>
+            <div class="d-grid gap-2 col-2 mx-auto float-end">
+                <button class="btn btn-outline-info" type="submit"  [disabled]="transactionForm.invalid" ><b>Confirm</b></button>
+            </div>
+            </form>
+        </div>
+      </div>
+      <div class="col col-lg-1">
+      </div>
+    </div>
+</div>
+</body>

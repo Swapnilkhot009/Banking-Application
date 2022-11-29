@@ -1,0 +1,85 @@
+<body>
+    <app-nav></app-nav>
+    <div class="container text-center">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-1">
+            </div>
+            <div class="col col-lg-10">
+                <div class="container">
+                    <form class="creditor" [formGroup]="creditorForm" (ngSubmit)="navigateToDebitor()">
+                        <b>
+                            <h1>Creditor Details</h1>
+                        </b>
+
+                        <hr style="border: 5px solid grey;border-radius: 5px;">
+                        <div class="input-group flex-nowrap">
+                            <label class="input-group-text">Account Number</label>
+                            <!-- <input
+                                [class.is-invalid]="creditorForm.controls['accountNo'].invalid && creditorForm.controls['accountNo'].touched"
+                                type="text" class="form-control" placeholder="Enter 8 digits account number "
+                                formControlName="accountNo"> -->
+
+                                <select
+                                [class.is-invalid]="creditorForm.controls['accountNo'].invalid && creditorForm.controls['accountNo'].touched"
+                                class="form-control" formControlName="accountNo" [(ngModel)]="accountNumber">
+                                <option selected>--SELECT--</option>
+                                <option *ngFor="let accountNumber of accountNumbers">{{accountNumber}}</option>
+                            </select>
+                        </div>
+                        <div class="float-start" style="margin-left: 18%;">
+                            <div
+                                *ngIf="(creditorForm.controls['accountNo'].invalid || creditorForm.controls['accountNo'].touched)">
+                            </div>
+                            <p *ngIf="creditorForm.controls['accountNo'].errors?.['required'] && creditorForm.controls['accountNo'].touched "
+                                class="text-danger">Account Number is required </p>
+                            <p *ngIf="creditorForm.controls['accountNo'].errors?.['pattern'] && creditorForm.controls['accountNo'].touched"
+                                class="text-danger">Account should be 8 digits </p>
+                        </div>
+                        <br>
+                        <div class="input-group flex-nowrap">
+                            <label class="input-group-text">Account Type</label>
+                            <select
+                                [class.is-invalid]="creditorForm.controls['accountType'].invalid && creditorForm.controls['accountType'].touched"
+                                class="form-control" formControlName="accountType">
+                                <option disabled selected>--SELECT--</option>
+                                <option value="SAVINGS">SAVINGS</option>
+                                <option value="CURRENT">CURRENT</option>
+                                <option value="CHECKING">CHECKING</option>
+                            </select>
+                        </div>
+                        <div class="float-start" style="margin-left: 18%;">
+                            <p *ngIf="creditorForm.controls['accountType'].errors?.['required'] && creditorForm.controls['accountType'].touched "
+                                class="text-danger">Account Type should be selected</p>
+                        </div>
+                        <br>
+                        <div class="input-group flex-nowrap">
+                            <label class="input-group-text">Beneficiary Type</label>
+                            <select
+                                [class.is-invalid]="creditorForm.controls['beneficiaryType'].invalid && creditorForm.controls['beneficiaryType'].touched"
+                                class="form-control" formControlName="beneficiaryType">
+                                <option disabled selected>--SELECT--</option>
+                                <option value="PERSONEL">PERSONEL</option>
+                                <option value="BUSINESS">BUSINESS</option>
+                            </select>
+                        </div>
+                        <div class="float-start" style="margin-left: 18%;">
+                            <p *ngIf="creditorForm.controls['beneficiaryType'].errors?.['required'] && creditorForm.controls['beneficiaryType'].touched "
+                                class="text-danger">Beneficiary Type should be selected</p>
+                        </div>
+                        <br><br>
+                        <div class="d-grid gap-2 col-2 mx-auto float-start" style="margin-left:2%;">
+                            <button class="btn btn-outline-danger" type="button"
+                                (click)="goBack()"><b>Previous</b></button>
+                        </div>
+                        <div class="d-grid gap-2 col-2 mx-auto float-end">
+                            <button class="btn btn-outline-info" [disabled]="creditorForm.invalid"
+                                type="submit"><b>Next</b></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col col-lg-1">
+            </div>
+        </div>
+    </div>
+</body>

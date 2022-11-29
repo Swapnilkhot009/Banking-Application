@@ -1,0 +1,111 @@
+<body>
+    <app-nav></app-nav>
+    <div class="container text-center">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-1"></div>
+            <div class="col col-lg-10">
+                <div class="container">
+                    <form class="beneficiary" [formGroup]="beneficiaryForm" (ngSubmit)="navigateToCreditor()"
+                        autocomplete="off">
+                        <b>
+                            <h1>Beneficiary Details</h1>
+                        </b>
+                        <hr style="border: 5px solid grey;border-radius: 5px;">
+                        <div class="input-group flex-nowrap">
+                            <label class="input-group-text">Name</label>
+                            <input
+                                [class.is-invalid]="beneficiaryForm.controls['name'].invalid && beneficiaryForm.controls['name'].touched"
+                                type="text" class="form-control" placeholder="Enter your name" formControlName="name">
+                        </div>
+                        <div class="float-start" style="margin-left: 18%;">
+                            <p *ngIf="beneficiaryForm.controls['name'].errors?.['required'] && beneficiaryForm.controls['name'].touched"
+                                class="text-danger">Name is required</p>
+                        </div>
+                        <br>
+                        <div class="input-group flex-nowrap">
+                            <label class="input-group-text">Address</label>
+                            <input
+                                [class.is-invalid]="beneficiaryForm.controls['address'].invalid && beneficiaryForm.controls['address'].touched"
+                                type="text" class="form-control" placeholder="Enter your address"
+                                formControlName="address">
+                        </div>
+                        <div class="float-start" style="margin-left: 18%;">
+                            <p *ngIf="beneficiaryForm.controls['address'].errors?.['required'] && beneficiaryForm.controls['address'].touched "
+                                class="text-danger">Address is required</p>
+                        </div>
+                        <br>
+                        <div class="input-group flex-nowrap">
+                            <label class="input-group-text">Phone</label>
+                            <input
+                                [class.is-invalid]="beneficiaryForm.controls['phone'].invalid && beneficiaryForm.controls['phone'].touched"
+                                type="text" class="form-control" placeholder="Contact" formControlName="phone">
+                        </div>
+                        <div class="float-start" style="margin-left: 18%;">
+                            <div
+                                *ngIf="(beneficiaryForm.controls['phone'].invalid || beneficiaryForm.controls['phone'].touched)">
+                            </div>
+                            <p *ngIf="beneficiaryForm.controls['phone'].errors?.['required'] && beneficiaryForm.controls['phone'].touched "
+                                class="text-danger">Mobile is required </p>
+                            <p *ngIf="beneficiaryForm.controls['phone'].errors?.['pattern'] && beneficiaryForm.controls['phone'].touched"
+                                class="text-danger">Mobile Number should 10 digits </p>
+                        </div>
+                        <br>
+                        <div class="input-group flex-nowrap">
+                            <label class="input-group-text">Email</label>
+                            <input
+                                [class.is-invalid]="beneficiaryForm.controls['email'].invalid && beneficiaryForm.controls['email'].touched"
+                                type="email" class="form-control" formControlName="email" placeholder="Enter Email">
+                        </div>
+                        <div class="float-start" style="margin-left: 18%;">
+                            <div
+                                *ngIf="(beneficiaryForm.controls['email'].invalid || beneficiaryForm.controls['email'].touched)">
+                            </div>
+                            <p *ngIf="beneficiaryForm.controls['email'].errors?.['required'] && beneficiaryForm.controls['email'].touched "
+                                class="text-danger">email is required </p>
+                            <p *ngIf="beneficiaryForm.controls['email'].errors?.['pattern'] && beneficiaryForm.controls['email'].touched"
+                                class="text-danger">Please provide a valid email address </p>
+                        </div>
+                        <br>
+                        <div formGroupName="beneficiaryBankInformation">
+                            <div class="input-group flex-nowrap">
+                                <label class="input-group-text">Bank Code</label>
+                                <select
+                                    [class.is-invalid]="beneficiaryForm.controls['beneficiaryBankInformation'].get('bankCode')?.invalid && beneficiaryForm.controls['beneficiaryBankInformation'].get('bankCode')?.touched"
+                                    class="form-control" formControlName="bankCode" [(ngModel)]="bankCode"
+                                    (ngModelChange)="getBank()">
+                                    <option selected>--SELECT--</option>
+                                    <option *ngFor="let code of bankCodes">{{code}}</option>
+                                </select>
+                            </div>
+                            <div class="float-start" style="margin-left: 18%;">
+                                <p *ngIf="beneficiaryForm.controls['beneficiaryBankInformation'].get('bankCode')?.errors?.['required'] && beneficiaryForm.controls['beneficiaryBankInformation'].get('bankCode')?.touched "
+                                    class="text-danger">Bank Code should be selected</p>
+                            </div>
+                            <br>
+                            <div class="input-group flex-nowrap">
+                                <label class="input-group-text">Bank Name</label>
+                                <input
+                                    [class.is-invalid]="beneficiaryForm.controls['beneficiaryBankInformation'].get('bankName')?.invalid && beneficiaryForm.controls['beneficiaryBankInformation'].get('bankName')?.touched"
+                                    type="text" readonly class="form-control" placeholder="Enter your Bank Name"
+                                    formControlName="bankName" [(ngModel)]="bankName">
+                            </div>
+                            <div class="float-start" style="margin-left: 18%;">
+                                <p *ngIf="beneficiaryForm.controls['beneficiaryBankInformation'].get('bankName')?.errors?.['required'] && beneficiaryForm.controls['beneficiaryBankInformation'].get('bankName')?.touched "
+                                    class="text-danger">Bank name is required </p>
+                            </div>
+                            <br>
+                        </div>
+
+                        <div class="d-grid gap-2 col-2 float-end">
+                            <button type="button" class="btn btn-outline-info" [disabled]="beneficiaryForm.invalid"
+                                type="submit"><b>Next</b></button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="col col-lg-1">
+            </div>
+        </div>
+    </div>
+</body>

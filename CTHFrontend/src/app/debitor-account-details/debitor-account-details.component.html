@@ -1,0 +1,86 @@
+<body>
+<app-nav></app-nav>
+<div class="container text-center">
+    <div class="row justify-content-md-center">
+      <div class="col col-lg-1">
+      </div>
+      <div class="col col-lg-10">
+        <div class="container">
+            <form class="debitor" [formGroup]="debitorForm" (ngSubmit)="navigateToTransaction()">
+                <b><h1>Debitor Details</h1></b>
+                <hr style="border: 5px solid grey;border-radius: 5px;">
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text">Account Number</label>
+                <input  [class.is-invalid]="debitorForm.controls['accountNo'].invalid && debitorForm.controls['accountNo'].touched" type="text" class="form-control" placeholder="Enter 8 digits account number " formControlName="accountNo" >
+            </div>
+            <div class="float-start" style="margin-left: 18%;">
+            <div *ngIf="(debitorForm.controls['accountNo'].invalid || debitorForm.controls['accountNo'].touched)"></div>
+            <p *ngIf="debitorForm.controls['accountNo'].errors?.['required'] && debitorForm.controls['accountNo'].touched  " class="text-danger">Account Number is required </p>
+            <p *ngIf="debitorForm.controls['accountNo'].errors?.['pattern'] && debitorForm.controls['accountNo'].touched" class="text-danger">Account should be 8 digits </p>
+            </div>
+            <br>
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text">Account Type</label>
+                <select [class.is-invalid]="debitorForm.controls['accountType'].invalid && debitorForm.controls['accountType'].touched" class="form-control" formControlName="accountType">
+                    <option disabled selected>--SELECT--</option>
+                    <option value="SAVINGS">SAVINGS</option>
+                    <option value="CURRENT">CURRENT</option>
+                    <option value="CHECKING">CHECKING</option>
+                </select>
+            </div>
+            <div class="float-start" style="margin-left: 18%;">
+            <p *ngIf="debitorForm.controls['accountType'].errors?.['required'] && debitorForm.controls['accountType'].touched " class="text-danger">Account Type should be selected</p>
+            </div>
+            <br>
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text">Account Name</label>
+                <input [class.is-invalid]="debitorForm.controls['accountName'].invalid && debitorForm.controls['accountName'].touched" type="text" class="form-control" placeholder="Account holder name" formControlName="accountName" >
+            </div>
+            <div class="float-start" style="margin-left: 18%;">
+            <p *ngIf="debitorForm.controls['accountName'].errors?.['required'] && debitorForm.controls['accountName'].touched " class="text-danger">Account Holder Name is required</p>
+            </div>
+            <br>
+            <div formGroupName="debitorBankInformation">
+                <div class="input-group flex-nowrap">
+                    <label class="input-group-text">Bank Code</label>
+                    <select
+                        [class.is-invalid]="debitorForm.controls['debitorBankInformation'].get('bankCode')?.invalid && debitorForm.controls['debitorBankInformation'].get('bankCode')?.touched"
+                        class="form-control" formControlName="bankCode" [(ngModel)]="bankCd"
+                        (ngModelChange)="getBank()">
+                        <option selected>--SELECT--</option>
+                        <option *ngFor="let code of bankCodes">{{code}}</option>
+                    </select>
+                </div>
+                <div class="float-start" style="margin-left: 18%;">
+                    <p *ngIf="debitorForm.controls['debitorBankInformation'].get('bankCode')?.errors?.['required'] && debitorForm.controls['debitorBankInformation'].get('bankCode')?.touched "
+                        class="text-danger">Bank Code should be selected</p>
+                </div>
+                <br>
+                <div class="input-group flex-nowrap">
+                    <label class="input-group-text">Bank Name</label>
+                    <input
+                        [class.is-invalid]="debitorForm.controls['debitorBankInformation'].get('bankName')?.invalid && debitorForm.controls['debitorBankInformation'].get('bankName')?.touched"
+                        type="text" readonly class="form-control" placeholder="Enter your Bank Name"
+                        formControlName="bankName" [(ngModel)]="bankName">
+                </div>
+                <div class="float-start" style="margin-left: 18%;">
+                    <p *ngIf="debitorForm.controls['debitorBankInformation'].get('bankName')?.errors?.['required'] && debitorForm.controls['debitorBankInformation'].get('bankName')?.touched "
+                        class="text-danger">Bank name is required </p>
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="d-grid gap-2 col-2 mx-auto float-start">
+                <button class="btn btn-outline-danger" type="button" (click)="goBack()" ><b>Previous</b></button>
+            </div>
+            <div class="d-grid gap-2 col-2 mx-auto float-end">
+                <button class="btn btn-outline-info"  [disabled]="debitorForm.invalid" type="submit"  ><b>Next</b></button>
+            </div>
+            </form>
+        </div>
+      </div>
+      <div class="col col-lg-1">
+      </div>
+    </div>
+  </div>
+  </body>

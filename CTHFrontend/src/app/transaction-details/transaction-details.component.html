@@ -1,0 +1,39 @@
+<body>
+<app-nav></app-nav>
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+    <div class="text-bg-secondary text-center">
+        <h2>{{this.errorMessage}}</h2>
+    </div>
+    <table class="table table-bordered" *ngIf="showTransactions" >
+        <thead style="background-color:rgb(6, 103, 20)">
+        <tr>
+            <th style="color:white" class="text-center" colspan="3">Transaction Details</th>
+            <th style="color:white" class="text-center" colspan="2">Creditor Details</th>
+            <th style="color:white" class="text-center" colspan="2">Debitor Details</th>
+        </tr>
+        <tr>
+            <td style="color:white">Transaction No.</td>
+            <td style="color:white">Amount</td>
+            <td style="color:white">Date</td>
+            <td style="color:white">Account no.</td>
+            <td style="color:white">Beneficiary name</td>
+            <td style="color:white" colspan="2">Account No.</td>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor ="let data of transaction">
+                <td #transactionNo>{{data.transactionReferenceNumber}}</td>
+                <td>{{data.amount | currency:'INR'}}</td>
+                <td>{{data.transactionDate | date}}</td>
+                <td>{{data.creditorAccountDetails.accountNo}}</td>
+                <td>{{data.creditorAccountDetails.beneficiaryDetails.name}}</td>
+                <td>{{data.debitorAccountDetails.accountNo}}</td>
+                <td><button class="btn btn-link" (click)="getTransactionDetails(data.transactionReferenceNumber)" >View Details</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+</div>
+

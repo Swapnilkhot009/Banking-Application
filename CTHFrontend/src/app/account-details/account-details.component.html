@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="float-end">
+    <button class="btn btn-success"><i class="fa fa-plus"></i>Add Account</button>
+  </div><br><br>
+  <div class="text-bg-secondary text-center" *ngIf="errorMessage!=''">
+    <h2>No Accounts available</h2>
+</div>
+</div>
+<div class="container" *ngIf="errorMessage == ''">
+    <p style="font-size: x-large; color: rgb(6, 103, 20)"><b>List Of Accounts</b></p>
+    
+    <table class="table table-bordered table-striped" style="background-color:white;border-style:none" >
+      <thead style="background-color:  rgb(3, 162, 27)">
+      <tr >
+        <th style="color:white">Account Number</th>
+        <th style="color:white">Account Type</th>
+        <th style="color:white">Account Name</th>
+        <th style="color:white">Account Balance</th>
+        
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of accountDetails">
+        <td><span>{{data.accountNumber}}</span></td>
+        <td><span>{{data.accountType}}</span></td>
+        <td><span>{{data.acconutName}}</span></td>
+        <td><span>{{data.accountBalance | currency:'INR'}}</span></td> 
+      </tr>
+      </tbody>
+    </table>
+</div>
+

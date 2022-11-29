@@ -1,0 +1,63 @@
+{
+  "amount": 100,
+    "customerID": 1919191920,
+    "frequency": "RECURRING",
+    "transactionDate":"2022-10-25",
+    "transferType": "INTERNAL",
+  "creditorAccountDetails": {
+                    "accountNo": 80431960,
+                    "accountType":"CURRENT",
+                    "beneficiaryType": "PERSONEL",
+                    "beneficiaryDetails":{
+                                "name": "Raj K",
+                                "address": "Baner Road Mumbai",
+                                "phone": "2132123422",
+                                "email": "Raj123@gmail.com",
+                                "beneficiaryBankInformation":{
+                                  "bankCode":"IFSCC",
+                                  "bankName":"ICICI BANK OF INDIA"
+                                  
+                                }
+                      
+                    }
+  },
+  "debitorAccountDetails":{
+            "accountNo":70649106,
+            "accountType": "CURRENT",
+            "accountName": "Max p",
+            "debitorBankInformation":{
+            "bankCode":"SBIN00000",
+            "bankName":"STATE BANK OF INDIA"
+          }
+  }
+}
+
+
+
+{
+  "bankCode": "Atlantis002",
+  "bankName": "Atlantis Bank",
+  "bankAddress": "Bangalore"
+}
+
+{"customerID": 6573894513,
+
+    "customerName": "Vishakha",
+
+    "customerAddress": "Ghaziabad",
+
+    "ssn": 888888888888,
+
+    "customerPhoneNumber": 9876777666,
+
+    "customerEmailId": "Vishakha@gmail.com",
+
+    "bankCode": "Atlantis01",
+
+    "bankName": "Atlantis",
+
+    "okToMail": false,
+
+    "okToCall": false,
+
+    "okToText": false}
