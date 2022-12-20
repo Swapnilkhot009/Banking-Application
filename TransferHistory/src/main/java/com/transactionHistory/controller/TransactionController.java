@@ -25,17 +25,15 @@ public class TransactionController {
 	@Autowired
 	private TransactionService tService;
 
-	@PostMapping("/create-Transfer")
-	public long createTransfer(@Valid @RequestBody transactionDTO transactionDTO) {
-		System.out.println(transactionDTO.toString());
-		long transId = this.tService.newTransaction(transactionDTO);
-		return transId;
-	}
+//	@PostMapping("/create-Transfer")
+//	public long createTransfer(@Valid @RequestBody transactionDTO transactionDTO) {
+//		long transId = this.tService.newTransaction(transactionDTO);
+//		return transId;
+//	}
 	
 	
 	@GetMapping("/transfer-history/{transaction_id}")
 	public transactionDTO transferHistoryByTransactionId(@Valid @PathVariable("transaction_id")long transaction_id) throws NotFoundException {
-		System.out.println(transaction_id);
 		return tService.transferHistoryByTransactionId(transaction_id);
 	}
 	@GetMapping("/transfer-history")

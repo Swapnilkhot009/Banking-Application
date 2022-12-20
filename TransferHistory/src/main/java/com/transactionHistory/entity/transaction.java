@@ -18,15 +18,15 @@ public class transaction {
 	private LocalDate transactionDate;
 	private String transferType;
 	private long transactionReferenceNumber;
-	private creditorAccountDetailsDTO creditorAccountDetails;
-	private debitorAccountDetailsDTO debitorAccountDetails;
+	private creditorAccountDetails creditorAccountDetails;
+	private debitorAccountDetails debitorAccountDetails;
 	public transaction() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public transaction(int amount, String frequency, long customerID, LocalDate transactionDate, String transferType,
-			long transactionReferenceNumber, creditorAccountDetailsDTO creditorAccountDetails,
-			debitorAccountDetailsDTO debitorAccountDetails) {
+			long transactionReferenceNumber, creditorAccountDetails creditorAccountDetails,
+			debitorAccountDetails debitorAccountDetails) {
 		super();
 		this.amount = amount;
 		this.frequency = frequency;
@@ -75,16 +75,16 @@ public class transaction {
 	public void setTransactionReferenceNumber(long transactionReferenceNumber) {
 		this.transactionReferenceNumber = transactionReferenceNumber;
 	}
-	public creditorAccountDetailsDTO getCreditorAccountDetails() {
+	public creditorAccountDetails getCreditorAccountDetails() {
 		return creditorAccountDetails;
 	}
-	public void setCreditorAccountDetails(creditorAccountDetailsDTO creditorAccountDetails) {
+	public void setCreditorAccountDetails(creditorAccountDetails creditorAccountDetails) {
 		this.creditorAccountDetails = creditorAccountDetails;
 	}
-	public debitorAccountDetailsDTO getDebitorAccountDetails() {
+	public debitorAccountDetails getDebitorAccountDetails() {
 		return debitorAccountDetails;
 	}
-	public void setDebitorAccountDetails(debitorAccountDetailsDTO debitorAccountDetails) {
+	public void setDebitorAccountDetails(debitorAccountDetails debitorAccountDetails) {
 		this.debitorAccountDetails = debitorAccountDetails;
 	}
 	@Override

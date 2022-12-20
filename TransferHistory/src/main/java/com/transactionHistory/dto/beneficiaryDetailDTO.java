@@ -12,6 +12,12 @@ public class beneficiaryDetailDTO {
 	@Email(message = "Enter a valid email id")
 	private String email;
 	private bankInformationDTO beneficiaryBankInformation;
+	
+	
+	public beneficiaryDetailDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public String getName() {
 		return name;
 	}

@@ -6,7 +6,7 @@ public class creditorAccountDetails {
 	private int accountNo;
 	private String accountType;
 	private String beneficiaryType;
-	private beneficiaryDetailDTO beneficiaryDetails;
+	private beneficiaryDetail beneficiaryDetails;
 	
 	public creditorAccountDetails() {
 		super();
@@ -14,7 +14,7 @@ public class creditorAccountDetails {
 	
 
 	public creditorAccountDetails(int accountNo,String accountType,String beneficiaryType,
-			beneficiaryDetailDTO beneficiaryDetails) {
+			beneficiaryDetail beneficiaryDetails) {
 		super();
 		this.accountNo = accountNo;
 		this.accountType = accountType;
@@ -47,11 +47,11 @@ public class creditorAccountDetails {
 		this.beneficiaryType = beneficiaryType;
 	}
 
-	public beneficiaryDetailDTO getBeneficiaryDetails() {
+	public beneficiaryDetail getBeneficiaryDetails() {
 		return beneficiaryDetails;
 	}
 
-	public void setBeneficiaryDetails(beneficiaryDetailDTO beneficiaryDetails) {
+	public void setBeneficiaryDetails(beneficiaryDetail beneficiaryDetails) {
 		this.beneficiaryDetails = beneficiaryDetails;
 	}
 

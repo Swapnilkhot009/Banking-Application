@@ -5,6 +5,9 @@ public class bankInformationDTO {
 	private String bankCode;
 	private String bankName;
 	
+	public bankInformationDTO() {
+		super();
+	}
 	public bankInformationDTO(String bankCode, String bankName) {
 		super();
 		this.bankCode = bankCode;

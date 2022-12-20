@@ -12,7 +12,7 @@ import com.transactionHistory.entity.transaction;
 import com.transactionHistory.show.transactionShow;
 
 
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 public class TransferHistoryApplication implements WebMvcConfigurer{
 
 	public static void main(String[] args) {

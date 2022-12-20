@@ -15,6 +15,7 @@ public class GlobalExceptionHandler {
 		error.setMessage(e.getMessage());
 		return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
 	}
+	
 	@ExceptionHandler(InvalidCredentialsException.class)
 	public ResponseEntity<ErrorMessage> InvalidUser(InvalidCredentialsException e){
 		ErrorMessage error = new ErrorMessage();

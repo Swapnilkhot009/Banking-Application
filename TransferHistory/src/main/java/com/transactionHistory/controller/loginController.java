@@ -12,6 +12,7 @@ import com.transactionHistory.Exception.InvalidCredentialsException;
 import com.transactionHistory.dto.LoginDTO;
 import com.transactionHistory.service.loginService;
 
+@SuppressWarnings("unused")
 @RestController
 public class loginController {
 	
@@ -26,6 +27,7 @@ public class loginController {
 	
 	@PostMapping("/newUser")
 	public ResponseEntity<Boolean> newUser(@RequestBody LoginDTO loginDTO) throws InvalidCredentialsException{
+		System.out.println("in login service");
 		Boolean success = loginService.register(loginDTO);
 		return ResponseEntity.ok().body(success);
 	}
