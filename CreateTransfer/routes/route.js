@@ -13,4 +13,5 @@ route.post("/account-details",AccountSer.getAccountDetails);
 route.get("/bank-details",BankSer.getBankDetails);
 route.get("/bank-detailsByBankcode",BankSer.getBankDetailsByBankCode);
 route.post("/add-bank",BankSer.newBank);
+route.put("/update", AccountSer.updateAccountDetails)
 module.exports = route

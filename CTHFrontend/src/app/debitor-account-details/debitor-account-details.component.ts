@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,7 +13,7 @@ import { Debitor } from './debitor';
 })
 export class DebitorAccountDetailsComponent implements OnInit {
 
-  constructor(private bankDetSer: BankdetailsService,private formBuilder : FormBuilder,private route:Router,private transactionSer:TransactionService) { }
+  constructor(private httpClient: HttpClient,private bankDetSer: BankdetailsService,private formBuilder : FormBuilder,private route:Router,private transactionSer:TransactionService) { }
 
   debitorForm!: FormGroup;
   debitor!: Debitor;
@@ -20,6 +21,10 @@ export class DebitorAccountDetailsComponent implements OnInit {
   bankCodes:string[]=[]
   bankCd!:String
   bankName:string=''
+  public accountDetails:any;
+  errorMessage!: string;
+  accountNumbers:string[]=[]
+  accountNumber!:string
   ngOnInit(): void {
     this.debitor = this.transactionSer.getDebitorsDetails()??new Debitor();
     this.debitor.debitorBankInformation = this.debitor.debitorBankInformation??new BeneficiaryBank();
@@ -30,7 +35,6 @@ export class DebitorAccountDetailsComponent implements OnInit {
       debitorBankInformation: new FormGroup({
         bankCode:new FormControl(this.debitor.debitorBankInformation.bankCode,[Validators.required]),
         bankName: new FormControl(this.debitor.debitorBankInformation.bankName,[Validators.required])
-        
       })
     })
     this.bankDetSer.getBankDetails().subscribe((data) => {
@@ -39,6 +43,18 @@ export class DebitorAccountDetailsComponent implements OnInit {
         this.bankCodes.push(element.bankCode)
       }); 
     });
+    this.httpClient.post('http://localhost:3000/account-details',{"customerID":sessionStorage.getItem("cID")}).subscribe({
+      next: (data)=>{
+        this.accountDetails=data;
+        this.accountDetails.forEach((element: any) => {
+          this.accountNumbers.push(element.accountNumber)
+        });
+        this.errorMessage='';
+      },
+      error: (error) => {
+        this.errorMessage = error.error.message;
+      }}
+    );
   }
   getBank(){
     this.bankDetails.forEach((element:any) => {

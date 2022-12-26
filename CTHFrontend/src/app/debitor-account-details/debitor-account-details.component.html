@@ -9,9 +9,23 @@
             <form class="debitor" [formGroup]="debitorForm" (ngSubmit)="navigateToTransaction()">
                 <b><h1>Debitor Details</h1></b>
                 <hr style="border: 5px solid grey;border-radius: 5px;">
-            <div class="input-group flex-nowrap">
+            <!-- <div class="input-group flex-nowrap">
                 <label class="input-group-text">Account Number</label>
                 <input  [class.is-invalid]="debitorForm.controls['accountNo'].invalid && debitorForm.controls['accountNo'].touched" type="text" class="form-control" placeholder="Enter 8 digits account number " formControlName="accountNo" >
+            </div> -->
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text">Account Number</label>
+                <!-- <input
+                    [class.is-invalid]="creditorForm.controls['accountNo'].invalid && creditorForm.controls['accountNo'].touched"
+                    type="text" class="form-control" placeholder="Enter 8 digits account number "
+                    formControlName="accountNo"> -->
+
+                    <select
+                    [class.is-invalid]="debitorForm.controls['accountNo'].invalid && debitorForm.controls['accountNo'].touched"
+                    class="form-control" formControlName="accountNo" [(ngModel)]="accountNumber">
+                    <option selected>--SELECT--</option>
+                    <option *ngFor="let accountNumber of accountNumbers">{{accountNumber}}</option>
+                </select>
             </div>
             <div class="float-start" style="margin-left: 18%;">
             <div *ngIf="(debitorForm.controls['accountNo'].invalid || debitorForm.controls['accountNo'].touched)"></div>
