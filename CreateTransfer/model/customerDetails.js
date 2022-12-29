@@ -1,14 +1,12 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 
-mongoose.connect("mongodb://localhost:27017/transactionDB").then(()=>   
-console.log("Database Connected")
-);
+
 const customerDetailsSchema = new mongoose.Schema({
     customerID: {
         type: Number,
         required: true,
-        unique: true
+        unique:true
     },
     customerName: {
         type: String,

@@ -4,8 +4,9 @@
   "description": "Create Transfer API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "test": "mocha ./tests/*.spec.js --exit",
+    "coverage": "nyc --reporter=text npm test"
   },
   "author": "",
   "license": "ISC",
@@ -16,9 +17,12 @@
     "express": "^4.18.2",
     "mongoose": "^6.6.5",
     "nodemon": "^2.0.20",
+    "nyc": "^15.1.0",
     "properties-reader": "^2.2.0",
-    "request": "^2.88.2",
-    "request-promise": "^4.2.6",
+    "rewire": "^6.0.0",
+    "sinon": "^15.0.0",
+    "sinon-chai": "^3.7.0",
+    "supertest": "^6.3.3",
     "validator": "^13.7.0"
   }
 }

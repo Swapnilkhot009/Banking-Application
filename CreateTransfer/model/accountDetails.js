@@ -3,7 +3,8 @@ const accountDetailsSchema=new mongoose.Schema({
 
     customerID:{
         type:Number,
-        required:true
+        required:true,
+        unique:true
     },
     accountNumber:{
         type:Number,

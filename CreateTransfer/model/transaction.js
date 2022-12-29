@@ -18,7 +18,7 @@ const transactionSchema = new mongoose.Schema({
     },
     transactionDate: {
         type: Date,
-        default: Date.now()
+       // default: Date.now()
     },
     transferType: {
         type: String,
@@ -80,7 +80,7 @@ const transactionSchema = new mongoose.Schema({
                     beneficiaryBankInformation: {
                         bankCode:{
                             type:String,
-                            maxLength:10,
+                            maxLength:20,
                             required: true,
                         },
                         bankName:{
@@ -115,7 +115,7 @@ const transactionSchema = new mongoose.Schema({
             debitorBankInformation: {
                 bankCode:{
                     type:String,
-                    maxLength:10,
+                    maxLength:20,
                     required:true,
                 },
                 bankName:{

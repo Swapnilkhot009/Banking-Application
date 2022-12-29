@@ -35,6 +35,7 @@ export class DebitorAccountDetailsComponent implements OnInit {
       debitorBankInformation: new FormGroup({
         bankCode:new FormControl(this.debitor.debitorBankInformation.bankCode,[Validators.required]),
         bankName: new FormControl(this.debitor.debitorBankInformation.bankName,[Validators.required])
+        
       })
     })
     this.bankDetSer.getBankDetails().subscribe((data) => {

@@ -22,8 +22,6 @@ export class AccountDetailsComponent implements OnInit {
     this.httpClient.post('http://localhost:3000/account-details',{"customerID":sessionStorage.getItem("cID")}).subscribe({
       next: (data)=>{
         this.accountDetails=data;
-        
-        
         this.errorMessage='';
       },
       error: (error) => {

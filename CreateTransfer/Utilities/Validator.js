@@ -82,7 +82,7 @@ exports.validateDateFormat = function (date) {
     return null;
 }
 
-exports.required = function (data) {``
+exports.required = function (data) {
     if(!data.customerID)
         return "Customer Id is required";
     else if(!data.amount)

@@ -19,6 +19,8 @@ import { ConfirmTransactionComponent } from './confirm-transaction/confirm-trans
 import { LoginComponent } from './login/login.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
+import { LimitDetailsComponent } from './limit-details/limit-details.component';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 
 @NgModule({
@@ -35,14 +37,16 @@ import { AccountDetailsComponent } from './account-details/account-details.compo
     ConfirmTransactionComponent,
     LoginComponent,
     CustomerDetailsComponent,
-    AccountDetailsComponent
+    AccountDetailsComponent,
+    LimitDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    HighchartsChartModule
   ],
   providers: [BeneficiaryService, CreditorService],
   bootstrap: [AppComponent]
